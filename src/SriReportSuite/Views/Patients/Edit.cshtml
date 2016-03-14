@@ -1,0 +1,138 @@
+@model SriReportSuite.Models.Patient
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>Patient</h4>
+        <hr />
+        <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="PatientID" />
+
+        <div class="form-group">
+            <label asp-for="FirstName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FirstName" rows="5" cols="75" class="form-control textlist" />
+                <span asp-validation-for="FirstName" class="text-danger" />
+            </div>
+        </div> <!--FirstName-->
+        
+        <div class="form-group">
+            <label asp-for="SurName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="SurName" class="form-control" />
+                <span asp-validation-for="SurName" class="text-danger" />
+            </div>
+        </div> <!-- Surname --> 
+        
+        <div class="form-group">
+            <label asp-for="DOB" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DOB" class="form-control" />
+                <span asp-validation-for="DOB" class="text-danger" />
+            </div>
+        </div> <!--DOB-->
+
+        <div class="form-group">
+            <label asp-for="NHSNum" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="NHSNum" class="form-control" />
+                <span asp-validation-for="NHSNum" class="text-danger" />
+            </div>
+        </div> <!-- NHS Num-->
+
+        <div class="form-group">
+            <label asp-for="HospNum" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="HospNum" class="form-control" />
+                <span asp-validation-for="HospNum" class="text-danger" />
+            </div>
+        </div> <!-- Hospital Number -->
+
+        <div class="form-group">
+            <label asp-for="Address" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger" />
+            </div>
+        </div> <!--Address-->
+
+        <div class="form-group">
+            <label asp-for="City" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger" />
+            </div>
+        </div> <!-- City-->
+
+        <div class="form-group">
+            <label asp-for="PostCode" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="PostCode" class="form-control" />
+                <span asp-validation-for="PostCode" class="text-danger" />
+            </div>
+        </div> <!-- PostCode -->
+
+        <div class="form-group">
+            <label asp-for="ClinicID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ClinicID" class="form-control" />
+                <span asp-validation-for="ClinicID" class="text-danger" />
+            </div>
+        </div> <!--clinicID-->
+
+        <div class="form-group">
+            <label asp-for="ConsID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ConsID" class="form-control" />
+                <span asp-validation-for="ConsID" class="text-danger" />
+            </div>
+        </div> <!-- ConsID-->
+
+        <div class="form-group">
+            <label asp-for="Diagnosis" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <textarea asp-for="Diagnosis" class="form-control"> </textarea>
+                <span asp-validation-for="Diagnosis" class="text-danger" />
+            </div>
+        </div> <!--diagnosis-->
+
+        <div class="form-group">
+            <label asp-for="Procedures" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <textarea asp-for="Procedures" class="form-control" ></textarea>
+                <span asp-validation-for="Procedures" class="text-danger" />
+            </div>
+        </div> <!--Procedure-->
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="dead" />
+                    <label asp-for="dead"></label>
+                </div>
+            </div>
+        </div> <!-- Dead-->
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div> <!-- Save-->
+
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
