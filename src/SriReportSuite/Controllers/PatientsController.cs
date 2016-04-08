@@ -3,6 +3,7 @@ using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
 using SriReportSuite.Models;
+using System.Collections.Generic;
 
 namespace SriReportSuite.Controllers
 {
@@ -16,9 +17,31 @@ namespace SriReportSuite.Controllers
         }
 
         // GET: Patients
-        public IActionResult Index()
+        public IActionResult Index(string city, string searchString)
         {
-            return View(_context.Patient.ToList());
+            var cityQuery = from p in _context.Patient
+                            orderby p.City
+                            select p.City;
+            var cityList = new List<string>();
+            cityList.AddRange(cityQuery.Distinct());
+            ViewData["city"] = new SelectList(cityList);
+
+
+            var patients = from p in _context.Patient
+                           select p; //LINQ: selects all Patients to a list called patients
+
+            if (!string.IsNullOrEmpty(city))
+            {
+                patients = patients.Where(x => x.City == city);
+            }
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                patients = patients.Where(s => s.SurName.Contains(searchString));
+                //select the patient with the surname if available
+            }
+
+            return View(patients);
         }
 
         // GET: Patients/Details/5
@@ -47,7 +70,7 @@ namespace SriReportSuite.Controllers
         // POST: Patients/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Patient patient)
+        public IActionResult Create([Bind("PatientID, FirstName, SurName, DOB, HospNum, NHSNum, Address, City, PostCode, ClinicID,  ConsultantID, Diagnosis, Procedures, Dead")] Patient patient)
         {
             if (ModelState.IsValid)
             {
@@ -77,8 +100,8 @@ namespace SriReportSuite.Controllers
         // POST: Patients/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Patient patient)
-        {
+        public IActionResult Edit([Bind("PatientID, FirstName, SurName, DOB, HospNum, NHSNum, Address, City, PostCode, ClinicID,  ConsultantID, Diagnosis, Procedures, Dead")] Patient patient)
+        {   //the Bind is to prevent over-posting security vulnerability - data only goes to designated fields and none else, for eg = cannot send PatientID through this post...
             if (ModelState.IsValid)
             {
                 _context.Update(patient);

@@ -11,18 +11,64 @@
     <h4>Patient</h4>
     <hr />
     <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SurName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SurName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOB)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DOB)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HospNum)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HospNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NHSNum)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NHSNum)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Address)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Address)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.City)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.City)
         </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PostCode)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.ClinicID)
         </dt>
@@ -30,62 +76,38 @@
             @Html.DisplayFor(model => model.ClinicID)
         </dd>
         <dt>
+            @Html.DisplayNameFor(model => model.RefConsID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RefConsID)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.ConsID)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.ConsID)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.DOB)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DOB)
-        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Diagnosis)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Diagnosis)
+
+            @Html.Raw(Model.Diagnosis)
+
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.HospNum)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.HospNum)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.NHSNum)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NHSNum)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.PostCode)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.PostCode)
-        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Procedures)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Procedures)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SurName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SurName)
+
+            @Html.Raw(Model.Procedures)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.dead)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.dead)
         </dd>

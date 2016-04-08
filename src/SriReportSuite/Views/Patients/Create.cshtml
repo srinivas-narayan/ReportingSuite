@@ -1,3 +1,4 @@
+<script src="~/ckeditor/ckeditor.js" asp-append-version="true"></script>
 @model SriReportSuite.Models.Patient
 
 @{
@@ -35,6 +36,7 @@
                 <span asp-validation-for="HospNum" class="text-danger" />
             </div>
         </div>
+
         <div class="form-group">
             <label asp-for="NHSNum" class="col-md-2 control-label"></label>
             <div class="col-md-10">
@@ -84,35 +86,46 @@
         </div>
 
         <div class="form-group">
-            <label asp-for="ConsID" class="col-md-2 control-label"></label>
+            <label asp-for="ConsultantID" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="ConsID" class="form-control" />
-                <span asp-validation-for="ConsID" class="text-danger" />
+                <input asp-for="ConsultantID" class="form-control" />
+                <span asp-validation-for="ConsultantID" class="text-danger" />
             </div>
         </div>
 
-       <div class="form-group">
+        <div class="form-group">
+            <label asp-for="ConsultantID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ConsultantID" class="form-control" />
+                <span asp-validation-for="ConsultantID" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
             <label asp-for="Diagnosis" class="col-md-2 control-label"></label>
             <div class="col-md-10">
+                
                 <textarea asp-for="Diagnosis" rows ="5" cols ="40" class="form-control textlist"></textarea>
+                <script>CKEDITOR.replace('Diagnosis');</script>
                 <span asp-validation-for="Diagnosis" class="text-danger" />
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" >
             <label asp-for="Procedures" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <textarea asp-for="Procedures" class="form-control textlist" rows ="5" cols ="40" ></textarea>
+                
+                    <textarea asp-for="Procedures" class="form-control textlist" rows="5" cols="40"></textarea>
+                     <script>CKEDITOR.replace('Procedures');</script>
                 <span asp-validation-for="Procedures" class="text-danger" />
             </div>
         </div>
 
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <div class="checkbox">
-                    <input asp-for="dead" />
-                    <label asp-for="dead"></label>
+                    <input asp-for="Dead" />
+                    <label asp-for="Dead"></label>
                 </div>
             </div>
         </div>
@@ -122,6 +135,7 @@
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
+
     </div>
 </form>
 

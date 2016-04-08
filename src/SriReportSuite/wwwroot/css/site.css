@@ -1,4 +1,8 @@
-﻿body {
+﻿/* Set side wide P margin 0 to enable close paragraphs.... */
+p {
+    margin: 0;
+}
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }

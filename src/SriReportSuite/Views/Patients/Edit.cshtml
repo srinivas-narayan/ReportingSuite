@@ -1,3 +1,5 @@
+ <script src="~/ckeditor/ckeditor.js" asp-append-version="true"></script>
+<!--The asp-append version tag ensures that the latest version of the script is downloaded by the browser... It is entirely optional here..-->
 @model SriReportSuite.Models.Patient
 
 @{
@@ -20,15 +22,15 @@
                 <span asp-validation-for="FirstName" class="text-danger" />
             </div>
         </div> <!--FirstName-->
-        
+
         <div class="form-group">
             <label asp-for="SurName" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="SurName" class="form-control" />
                 <span asp-validation-for="SurName" class="text-danger" />
             </div>
-        </div> <!-- Surname --> 
-        
+        </div> <!-- Surname -->
+
         <div class="form-group">
             <label asp-for="DOB" class="col-md-2 control-label"></label>
             <div class="col-md-10">
@@ -86,17 +88,19 @@
         </div> <!--clinicID-->
 
         <div class="form-group">
-            <label asp-for="ConsID" class="col-md-2 control-label"></label>
+            <label asp-for="ConsultantID" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="ConsID" class="form-control" />
-                <span asp-validation-for="ConsID" class="text-danger" />
+                <input asp-for="ConsultantID" class="form-control" />
+                <span asp-validation-for="ConsultantID" class="text-danger" />
             </div>
         </div> <!-- ConsID-->
 
         <div class="form-group">
             <label asp-for="Diagnosis" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <textarea asp-for="Diagnosis" class="form-control"> </textarea>
+                
+                    <textarea asp-for="Diagnosis" class="form-control"> </textarea>
+                <script>CKEDITOR.replace('Diagnosis');</script>
                 <span asp-validation-for="Diagnosis" class="text-danger" />
             </div>
         </div> <!--diagnosis-->
@@ -104,7 +108,9 @@
         <div class="form-group">
             <label asp-for="Procedures" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <textarea asp-for="Procedures" class="form-control" ></textarea>
+                
+                    <textarea asp-for="Procedures" class="form-control"></textarea>
+                <script>CKEDITOR.replace('Procedures');</script>
                 <span asp-validation-for="Procedures" class="text-danger" />
             </div>
         </div> <!--Procedure-->
@@ -112,8 +118,8 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <div class="checkbox">
-                    <input asp-for="dead" />
-                    <label asp-for="dead"></label>
+                    <input asp-for="Dead" />
+                    <label asp-for="Dead"></label>
                 </div>
             </div>
         </div> <!-- Dead-->
