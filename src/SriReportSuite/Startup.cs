@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Builder;
+﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using SriReportSuite.DAL;
 using SriReportSuite.Models;
 using SriReportSuite.Services;
 
@@ -98,6 +95,8 @@ namespace SriReportSuite
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            ReportDBInitializer.Initialize(app.ApplicationServices); //Initialise Database
         }
 
         // Entry point for the application.

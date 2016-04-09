@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -22,16 +19,16 @@ namespace SriReportSuite.Models
         public int RoleID { get; set; } //foreign key to roles
 
 
-        public ICollection<Clinic> ClinicsDone { get; set; } //List of Cinics done
+        public virtual ICollection<Clinic> ClinicsDone { get; set; } //List of Cinics done
 
-        public ICollection<Patient> PatientsSeen { get; set; } //List of Patients seen as named consultant 
+        public virtual ICollection<Patient> PatientsSeen { get; set; } //List of Patients seen as named consultant 
     }
 
     public class MRIConsultant : Consultant //MRI consultants subgroup of Consultants
     {
 
-        public ICollection<Patient> PatientsScanned { get; set; } //List of patients scanned
+        public virtual ICollection<Patient> PatientsScanned { get; set; } //List of patients scanned
 
-        public ICollection<Study> Studies { get; set; } //List of scans done
+        public virtual ICollection<Study> Studies { get; set; } //List of scans done
     }
 }

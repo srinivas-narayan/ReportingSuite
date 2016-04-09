@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SriReportSuite.Models
 {
@@ -18,7 +15,7 @@ namespace SriReportSuite.Models
         [Required, StringLength(5, ErrorMessage ="Maximum length is 5 characters")]
         public string ClinicShortName { get; set; }
 
-        
-        public ICollection<Patient> Patients { get; set; } //List of patients in clinic
+
+        public virtual ICollection<Patient> Patients { get; set; } //List of patients in clinic
     }
 }

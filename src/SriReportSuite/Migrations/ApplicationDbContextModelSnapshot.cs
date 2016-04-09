@@ -277,6 +277,8 @@ namespace SriReportSuite.Migrations
                     b.Property<string>("Procedures")
                         .HasAnnotation("MaxLength", 2000);
 
+                    b.Property<int?>("RegistrarRegID");
+
                     b.Property<string>("SurName")
                         .HasAnnotation("MaxLength", 50);
 
@@ -325,7 +327,7 @@ namespace SriReportSuite.Migrations
 
                     b.Property<int>("ClinicID");
 
-                    b.Property<int>("Consultant_ConsultantID");
+                    b.Property<int>("ConsultantID");
 
                     b.Property<string>("Contrast");
 
@@ -349,9 +351,7 @@ namespace SriReportSuite.Migrations
                         .IsConcurrencyToken()
                         .ValueGeneratedOnAddOrUpdate();
 
-                    b.Property<int?>("MRIConsultantConsultantID");
-
-                    b.Property<int>("MRIConsultant_ConsultantID");
+                    b.Property<int>("MRIConsultantConsultantID");
 
                     b.Property<int>("PatientID");
 
@@ -365,9 +365,9 @@ namespace SriReportSuite.Migrations
 
                     b.Property<DateTime>("StudyDate");
 
-                    b.Property<string>("StudyStatus");
+                    b.Property<int>("StudyStatus");
 
-                    b.Property<string>("StudyType");
+                    b.Property<int>("StudyType");
 
                     b.Property<string>("Summary");
 
@@ -475,6 +475,10 @@ namespace SriReportSuite.Migrations
                     b.HasOne("SriReportSuite.Models.MRIConsultant")
                         .WithMany()
                         .HasForeignKey("MRIConsultantConsultantID");
+
+                    b.HasOne("SriReportSuite.Models.Registrar")
+                        .WithMany()
+                        .HasForeignKey("RegistrarRegID");
                 });
 
             modelBuilder.Entity("SriReportSuite.Models.Study", b =>

@@ -210,6 +210,7 @@ namespace SriReportSuite.Migrations
                     NHSNum = table.Column<string>(nullable: true),
                     PostCode = table.Column<string>(nullable: true),
                     Procedures = table.Column<string>(nullable: true),
+                    RegistrarRegID = table.Column<int>(nullable: true),
                     SurName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -233,6 +234,12 @@ namespace SriReportSuite.Migrations
                         principalTable: "Consultant",
                         principalColumn: "ConsultantID",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Patient_Registrar_RegistrarRegID",
+                        column: x => x.RegistrarRegID,
+                        principalTable: "Registrar",
+                        principalColumn: "RegID",
+                        onDelete: ReferentialAction.Restrict);
                 });
             migrationBuilder.CreateTable(
                 name: "Study",
@@ -243,7 +250,7 @@ namespace SriReportSuite.Migrations
                     Bronchosopy = table.Column<bool>(nullable: false),
                     CVP = table.Column<decimal>(nullable: false),
                     ClinicID = table.Column<int>(nullable: false),
-                    Consultant_ConsultantID = table.Column<int>(nullable: false),
+                    ConsultantID = table.Column<int>(nullable: false),
                     Contrast = table.Column<string>(nullable: true),
                     ContrastDose = table.Column<string>(nullable: true),
                     Echo = table.Column<string>(nullable: true),
@@ -254,16 +261,15 @@ namespace SriReportSuite.Migrations
                     Height = table.Column<decimal>(nullable: false),
                     Indication = table.Column<string>(nullable: true),
                     LastUpdated = table.Column<byte[]>(nullable: true),
-                    MRIConsultantConsultantID = table.Column<int>(nullable: true),
-                    MRIConsultant_ConsultantID = table.Column<int>(nullable: false),
+                    MRIConsultantConsultantID = table.Column<int>(nullable: false),
                     PatientID = table.Column<int>(nullable: false),
                     RegID = table.Column<int>(nullable: false),
                     ReportDate = table.Column<DateTime>(nullable: false),
                     Saturations = table.Column<int>(nullable: false),
                     ScanSummary = table.Column<string>(nullable: true),
                     StudyDate = table.Column<DateTime>(nullable: false),
-                    StudyStatus = table.Column<string>(nullable: true),
-                    StudyType = table.Column<string>(nullable: true),
+                    StudyStatus = table.Column<int>(nullable: false),
+                    StudyType = table.Column<int>(nullable: false),
                     Summary = table.Column<string>(nullable: true),
                     Weight = table.Column<decimal>(nullable: false)
                 },
@@ -275,7 +281,7 @@ namespace SriReportSuite.Migrations
                         column: x => x.MRIConsultantConsultantID,
                         principalTable: "Consultant",
                         principalColumn: "ConsultantID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Study_Patient_PatientID",
                         column: x => x.PatientID,
@@ -403,8 +409,8 @@ namespace SriReportSuite.Migrations
             migrationBuilder.DropTable("AspNetUsers");
             migrationBuilder.DropTable("Study");
             migrationBuilder.DropTable("Patient");
-            migrationBuilder.DropTable("Registrar");
             migrationBuilder.DropTable("Clinic");
+            migrationBuilder.DropTable("Registrar");
             migrationBuilder.DropTable("Consultant");
         }
     }

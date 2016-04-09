@@ -46,7 +46,7 @@ namespace SriReportSuite.Models
 
         //List of Patient's MRI Studies
         
-        public ICollection<Study> Studies { get; set; } 
+        public virtual ICollection<Study> Studies { get; set; } 
  
 
         public override string ToString() //coughs up most data as string
