@@ -172,6 +172,9 @@ namespace SriReportSuite.Migrations
                     b.Property<string>("Designation")
                         .HasAnnotation("MaxLength", 50);
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
                     b.Property<string>("ForeName")
                         .HasAnnotation("MaxLength", 50);
 
@@ -181,6 +184,10 @@ namespace SriReportSuite.Migrations
                         .HasAnnotation("MaxLength", 50);
 
                     b.HasKey("ConsultantID");
+
+                    b.HasAnnotation("Relational:DiscriminatorProperty", "Discriminator");
+
+                    b.HasAnnotation("Relational:DiscriminatorValue", "Consultant");
                 });
 
             modelBuilder.Entity("SriReportSuite.Models.Flow", b =>
@@ -259,6 +266,8 @@ namespace SriReportSuite.Migrations
                     b.Property<string>("HospNum")
                         .HasAnnotation("MaxLength", 15);
 
+                    b.Property<int?>("MRIConsultantConsultantID");
+
                     b.Property<string>("NHSNum")
                         .HasAnnotation("MaxLength", 15);
 
@@ -274,7 +283,7 @@ namespace SriReportSuite.Migrations
                     b.HasKey("PatientID");
                 });
 
-            modelBuilder.Entity("SriReportSuite.Models.Registrars", b =>
+            modelBuilder.Entity("SriReportSuite.Models.Registrar", b =>
                 {
                     b.Property<int>("RegID")
                         .ValueGeneratedOnAdd();
@@ -314,7 +323,9 @@ namespace SriReportSuite.Migrations
 
                     b.Property<decimal>("CVP");
 
-                    b.Property<int>("ConsultantID");
+                    b.Property<int>("ClinicID");
+
+                    b.Property<int>("Consultant_ConsultantID");
 
                     b.Property<string>("Contrast");
 
@@ -337,6 +348,10 @@ namespace SriReportSuite.Migrations
                     b.Property<byte[]>("LastUpdated")
                         .IsConcurrencyToken()
                         .ValueGeneratedOnAddOrUpdate();
+
+                    b.Property<int?>("MRIConsultantConsultantID");
+
+                    b.Property<int>("MRIConsultant_ConsultantID");
 
                     b.Property<int>("PatientID");
 
@@ -377,6 +392,14 @@ namespace SriReportSuite.Migrations
                     b.Property<int>("StudyID");
 
                     b.HasKey("VolumeID");
+                });
+
+            modelBuilder.Entity("SriReportSuite.Models.MRIConsultant", b =>
+                {
+                    b.HasBaseType("SriReportSuite.Models.Consultant");
+
+
+                    b.HasAnnotation("Relational:DiscriminatorValue", "MRIConsultant");
                 });
 
             modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityRoleClaim<string>", b =>
@@ -448,15 +471,23 @@ namespace SriReportSuite.Migrations
                     b.HasOne("SriReportSuite.Models.Consultant")
                         .WithMany()
                         .HasForeignKey("ConsultantConsultantID");
+
+                    b.HasOne("SriReportSuite.Models.MRIConsultant")
+                        .WithMany()
+                        .HasForeignKey("MRIConsultantConsultantID");
                 });
 
             modelBuilder.Entity("SriReportSuite.Models.Study", b =>
                 {
+                    b.HasOne("SriReportSuite.Models.MRIConsultant")
+                        .WithMany()
+                        .HasForeignKey("MRIConsultantConsultantID");
+
                     b.HasOne("SriReportSuite.Models.Patient")
                         .WithMany()
                         .HasForeignKey("PatientID");
 
-                    b.HasOne("SriReportSuite.Models.Registrars")
+                    b.HasOne("SriReportSuite.Models.Registrar")
                         .WithMany()
                         .HasForeignKey("RegID");
                 });

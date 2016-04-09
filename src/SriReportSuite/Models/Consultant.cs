@@ -27,7 +27,7 @@ namespace SriReportSuite.Models
         public ICollection<Patient> PatientsSeen { get; set; } //List of Patients seen as named consultant 
     }
 
-    public class MRIConsultants : Consultant //MRI consultants subgroup of Consultants
+    public class MRIConsultant : Consultant //MRI consultants subgroup of Consultants
     {
 
         public ICollection<Patient> PatientsScanned { get; set; } //List of patients scanned

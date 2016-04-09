@@ -11,7 +11,7 @@ namespace SriReportSuite.Models
     {
         [Key]
         public int ClinicID { get; set; }
-        [ForeignKey("Consultant")]
+        [Required, ForeignKey("Consultant")]
         public int ConsultantID { get; set; }
         [Required, StringLength(50, ErrorMessage ="Maximum length is 50 characters")]
         public string ClinicPlace { get; set; }

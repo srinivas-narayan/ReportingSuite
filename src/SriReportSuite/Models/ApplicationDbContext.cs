@@ -13,6 +13,7 @@ namespace SriReportSuite.Models
 
         public DbSet<Patient> Patient { get; set; }
         public DbSet<Consultant> Consultants { get; set; }
+        public DbSet<MRIConsultant> MRIConsultant { get; set; }
         public DbSet<Registrar> Registrars { get; set; }
         public DbSet<Clinic> Clinics { get; set; }
         public DbSet<Role> Role { get; set; }
