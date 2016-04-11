@@ -1,0 +1,30 @@
+@model SriReportSuite.Models.Clinic
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Clinic</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClinicPlace)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ClinicPlace)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ClinicShortName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ClinicShortName)
+        </dd>
+    </dl>
+</div>
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.ClinicID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</p>

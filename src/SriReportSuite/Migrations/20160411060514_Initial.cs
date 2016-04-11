@@ -205,13 +205,11 @@ namespace SriReportSuite.Migrations
                     Dead = table.Column<bool>(nullable: false),
                     Diagnosis = table.Column<string>(nullable: true),
                     FirstName = table.Column<string>(nullable: true),
-                    HospNum = table.Column<string>(nullable: true),
-                    MRIConsultantConsultantID = table.Column<int>(nullable: true),
+                    HospNum = table.Column<string>(nullable: false),
                     NHSNum = table.Column<string>(nullable: true),
-                    PostCode = table.Column<string>(nullable: true),
+                    PostCode = table.Column<string>(nullable: false),
                     Procedures = table.Column<string>(nullable: true),
-                    RegistrarRegID = table.Column<int>(nullable: true),
-                    SurName = table.Column<string>(nullable: true)
+                    SurName = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -228,18 +226,6 @@ namespace SriReportSuite.Migrations
                         principalTable: "Consultant",
                         principalColumn: "ConsultantID",
                         onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Patient_MRIConsultant_MRIConsultantConsultantID",
-                        column: x => x.MRIConsultantConsultantID,
-                        principalTable: "Consultant",
-                        principalColumn: "ConsultantID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Patient_Registrar_RegistrarRegID",
-                        column: x => x.RegistrarRegID,
-                        principalTable: "Registrar",
-                        principalColumn: "RegID",
-                        onDelete: ReferentialAction.Restrict);
                 });
             migrationBuilder.CreateTable(
                 name: "Study",
@@ -247,14 +233,14 @@ namespace SriReportSuite.Migrations
                 {
                     StudyID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Bronchosopy = table.Column<bool>(nullable: false),
+                    Bronchoscopy = table.Column<bool>(nullable: false),
                     CVP = table.Column<decimal>(nullable: false),
                     ClinicID = table.Column<int>(nullable: false),
                     ConsultantID = table.Column<int>(nullable: false),
                     Contrast = table.Column<string>(nullable: true),
                     ContrastDose = table.Column<string>(nullable: true),
                     Echo = table.Column<string>(nullable: true),
-                    Echocardiogram = table.Column<string>(nullable: true),
+                    Echocardiogram = table.Column<int>(nullable: false),
                     FiO2 = table.Column<decimal>(nullable: false),
                     Findings = table.Column<string>(nullable: true),
                     GA = table.Column<bool>(nullable: false),
@@ -409,8 +395,8 @@ namespace SriReportSuite.Migrations
             migrationBuilder.DropTable("AspNetUsers");
             migrationBuilder.DropTable("Study");
             migrationBuilder.DropTable("Patient");
-            migrationBuilder.DropTable("Clinic");
             migrationBuilder.DropTable("Registrar");
+            migrationBuilder.DropTable("Clinic");
             migrationBuilder.DropTable("Consultant");
         }
     }

@@ -1,81 +1,92 @@
-<script src="~/ckeditor/ckeditor.js" asp-append-version="true"></script>
 @model IEnumerable<SriReportSuite.Models.Patient>
 
 @{
-    ViewData["Title"] = "Patient List";
+    ViewData["Title"] = "Index";
 }
+
 <h2>Index</h2>
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<form asp-controller="Patients" asp-action="Index" method="get">
-    <p>
-        <table>
-            <tr>
-                <td>City :</td>
-                <td> @Html.DropDownList("city","All") </td>
-                <td> Surname : </td>
-                <td> <input type="text" name="searchString" /> </td>
-                <td> <input type="submit" value="Filter" /> </td>
-            </tr>
-        </table>
-    </p>
-</form>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.DisplayNameFor(model => model.Address)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SurName)
+            @Html.DisplayNameFor(model => model.City)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DOB)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.HospNum)
+            @Html.DisplayNameFor(model => model.Dead)
         </th>
-
         <th>
             @Html.DisplayNameFor(model => model.Diagnosis)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HospNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NHSNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostCode)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Procedures)
         </th>
-
         <th>
-            Links
+            @Html.DisplayNameFor(model => model.SurName)
         </th>
+        <th></th>
     </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SurName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DOB)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HospNum)
-            </td>
-            <td>
-
-                @Html.Raw(item.Diagnosis)
-
-
-            </td>
-            <td>
-                @Html.Raw(item.Procedures)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PatientID">Edit</a>
-                <a asp-action="Details" asp-route-id="@item.PatientID">Details</a>
-                <a asp-action="Delete" asp-route-id="@item.PatientID">Delete</a>
-            </td>
-        </tr>
-    }
+    
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DOB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dead)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Diagnosis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HospNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NHSNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Procedures)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SurName)
+        </td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.PatientID">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.PatientID">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.PatientID">Delete</a>
+        </td>
+    </tr>
+}
 </table>

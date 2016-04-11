@@ -8,7 +8,7 @@ using SriReportSuite.Models;
 namespace SriReportSuite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160409211817_Initial")]
+    [Migration("20160411060514_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -265,22 +265,21 @@ namespace SriReportSuite.Migrations
                         .HasAnnotation("MaxLength", 50);
 
                     b.Property<string>("HospNum")
+                        .IsRequired()
                         .HasAnnotation("MaxLength", 15);
-
-                    b.Property<int?>("MRIConsultantConsultantID");
 
                     b.Property<string>("NHSNum")
                         .HasAnnotation("MaxLength", 15);
 
                     b.Property<string>("PostCode")
+                        .IsRequired()
                         .HasAnnotation("MaxLength", 15);
 
                     b.Property<string>("Procedures")
                         .HasAnnotation("MaxLength", 2000);
 
-                    b.Property<int?>("RegistrarRegID");
-
                     b.Property<string>("SurName")
+                        .IsRequired()
                         .HasAnnotation("MaxLength", 50);
 
                     b.HasKey("PatientID");
@@ -322,7 +321,7 @@ namespace SriReportSuite.Migrations
                         .IsConcurrencyToken()
                         .ValueGeneratedOnAdd();
 
-                    b.Property<bool>("Bronchosopy");
+                    b.Property<bool>("Bronchoscopy");
 
                     b.Property<decimal>("CVP");
 
@@ -336,7 +335,7 @@ namespace SriReportSuite.Migrations
 
                     b.Property<string>("Echo");
 
-                    b.Property<string>("Echocardiogram");
+                    b.Property<int>("Echocardiogram");
 
                     b.Property<decimal>("FiO2");
 
@@ -472,14 +471,6 @@ namespace SriReportSuite.Migrations
                     b.HasOne("SriReportSuite.Models.Consultant")
                         .WithMany()
                         .HasForeignKey("ConsultantConsultantID");
-
-                    b.HasOne("SriReportSuite.Models.MRIConsultant")
-                        .WithMany()
-                        .HasForeignKey("MRIConsultantConsultantID");
-
-                    b.HasOne("SriReportSuite.Models.Registrar")
-                        .WithMany()
-                        .HasForeignKey("RegistrarRegID");
                 });
 
             modelBuilder.Entity("SriReportSuite.Models.Study", b =>

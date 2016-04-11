@@ -1,0 +1,158 @@
+@model IEnumerable<SriReportSuite.Models.Study>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Bronchoscopy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CVP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClinicID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConsultantID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contrast)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContrastDose)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Echo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Echocardiogram)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FiO2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Findings)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Height)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Indication)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastUpdated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReportDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Saturations)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ScanSummary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudyDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudyStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudyType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Summary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th></th>
+    </tr>
+    
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bronchoscopy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CVP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClinicID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConsultantID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contrast)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContrastDose)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Echo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Echocardiogram)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FiO2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Findings)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Height)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Indication)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastUpdated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReportDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Saturations)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ScanSummary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudyDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudyStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudyType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Summary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight)
+        </td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.StudyID">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.StudyID">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.StudyID">Delete</a>
+        </td>
+    </tr>
+}
+</table>

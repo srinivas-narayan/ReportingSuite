@@ -1,0 +1,38 @@
+@model IEnumerable<SriReportSuite.Models.Clinic>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ClinicPlace)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClinicShortName)
+        </th>
+        <th></th>
+    </tr>
+    
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClinicPlace)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClinicShortName)
+        </td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.ClinicID">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.ClinicID">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.ClinicID">Delete</a>
+        </td>
+    </tr>
+}
+</table>

@@ -57,9 +57,12 @@ namespace SriReportSuite.Models
 
     public enum StudyType
     {
-        PaedCardiacMRI,  ACHDCardiacMRI, MRICath_PVR_Study,   MRIStress_Perfusion,  FetalCardiacMRI , FeedWrapMRI
+        PaedCardiacMRI,  ACHDCardiacMRI, MRICath_PVR_Study,   MRI_Stress_Perfusion,  FetalCardiacMRI , FeedWrapMRI
     }
-
+    public enum Echocardiogram
+    {
+        None, Transthoracic, Transesophageal, Both_TTE_TOE
+    }
     public class Study
     {
         [Key, ConcurrencyCheck]
@@ -81,8 +84,8 @@ namespace SriReportSuite.Models
         public StudyType StudyType { get; set; }
         public bool GA { get; set; } //General Anaesthesia - Yes or No
         public string Echo { get; set; } //stores if echo done and if so - TOE / Transthoracic - hence "None", "Transthoracic", "Transesophageal", "Both TTE and TOE"
-        public bool Bronchosopy { get; set; } //Yes or No
-        public string Echocardiogram { get; set; } //types - None, Transthoracic, Transesophageal only
+        public bool Bronchoscopy { get; set; } //Yes or No
+        public Echocardiogram Echocardiogram { get; set; } //types - None, Transthoracic, Transesophageal only
         public decimal Weight { get; set; }
         public decimal Height { get; set; }
         public decimal CVP { get; set; }
@@ -96,11 +99,11 @@ namespace SriReportSuite.Models
         public string Summary { get; set; } //up to 1000 word summary of findings (html) - storing text formatting and links to pictures
 
         [ForeignKey("Registar")]
-        public int RegID { get; set; } //ID of registar doing report - foreign key to Registrars.cs
+        public int RegID { get; set; } //ID of registar doing report - foreign key to Registrar.cs
         [Required, ForeignKey("MRIConsultant")] //See naming convention of variable follows <navigation property name>_<primary key property name>
-        public int MRIConsultantConsultantID { get; set; } //ID of consultant supervising study - foreign key to class MRIConsultant (superclass of Consultants)
+        public int MRIConsultantConsultantID { get; set; } //ID of consultant supervising study - foreign key to class MRIConsultant (superclass of Consultant)
 
-        public virtual ICollection<Flow> Flows { get; set; }
+        public virtual ICollection<Flow> Flows { get; set; } //virtual: means this method is over-ridden in inherited class (it is only a place holder)
 
         public virtual ICollection<Volume> Volumes { get; set; }
 
@@ -119,3 +122,5 @@ The implementation could change. In some instances, perhaps the implementation c
 (This is a mindset you could use for more than just Entity Framework, by the way. A good object-oriented practice is to program towards the interface and not the implementation.
 Implementations can and will change.)
 */
+
+ /* ICollection declared as virtual to take advantage of lazy loading and also to code implementation seperately */

@@ -1,0 +1,50 @@
+@model SriReportSuite.Models.Clinic
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Clinic</h4>
+        <hr />
+        <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="ClinicPlace" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ClinicPlace" class="form-control" />
+                <span asp-validation-for="ClinicPlace" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ClinicShortName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ClinicShortName" class="form-control" />
+                <span asp-validation-for="ClinicShortName" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ConsultantID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="ConsultantID" class ="form-control"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

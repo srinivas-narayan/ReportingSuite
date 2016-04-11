@@ -7,22 +7,22 @@ using SriReportSuite.Models;
 
 namespace SriReportSuite.Controllers
 {
-    public class PatientsController : Controller
+    public class ClinicsController : Controller
     {
         private ApplicationDbContext _context;
 
-        public PatientsController(ApplicationDbContext context)
+        public ClinicsController(ApplicationDbContext context)
         {
             _context = context;    
         }
 
-        // GET: Patients
+        // GET: Clinic
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Patient.ToListAsync());
+            return View(await _context.Clinic.ToListAsync());
         }
 
-        // GET: Patients/Details/5
+        // GET: Clinic/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -30,36 +30,36 @@ namespace SriReportSuite.Controllers
                 return HttpNotFound();
             }
 
-            Patient patient = await _context.Patient.SingleAsync(m => m.PatientID == id);
-            if (patient == null)
+            Clinic clinic = await _context.Clinic.SingleAsync(m => m.ClinicID == id);
+            if (clinic == null)
             {
                 return HttpNotFound();
             }
 
-            return View(patient);
+            return View(clinic);
         }
 
-        // GET: Patients/Create
+        // GET: Clinic/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Patients/Create
+        // POST: Clinic/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Patient patient)
+        public async Task<IActionResult> Create(Clinic clinic)
         {
             if (ModelState.IsValid)
             {
-                _context.Patient.Add(patient);
+                _context.Clinic.Add(clinic);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(patient);
+            return View(clinic);
         }
 
-        // GET: Patients/Edit/5
+        // GET: Clinic/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -67,29 +67,29 @@ namespace SriReportSuite.Controllers
                 return HttpNotFound();
             }
 
-            Patient patient = await _context.Patient.SingleAsync(m => m.PatientID == id);
-            if (patient == null)
+            Clinic clinic = await _context.Clinic.SingleAsync(m => m.ClinicID == id);
+            if (clinic == null)
             {
                 return HttpNotFound();
             }
-            return View(patient);
+            return View(clinic);
         }
 
-        // POST: Patients/Edit/5
+        // POST: Clinic/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Patient patient)
+        public async Task<IActionResult> Edit(Clinic clinic)
         {
             if (ModelState.IsValid)
             {
-                _context.Update(patient);
+                _context.Update(clinic);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(patient);
+            return View(clinic);
         }
 
-        // GET: Patients/Delete/5
+        // GET: Clinic/Delete/5
         [ActionName("Delete")]
         public async Task<IActionResult> Delete(int? id)
         {
@@ -98,22 +98,22 @@ namespace SriReportSuite.Controllers
                 return HttpNotFound();
             }
 
-            Patient patient = await _context.Patient.SingleAsync(m => m.PatientID == id);
-            if (patient == null)
+            Clinic clinic = await _context.Clinic.SingleAsync(m => m.ClinicID == id);
+            if (clinic == null)
             {
                 return HttpNotFound();
             }
 
-            return View(patient);
+            return View(clinic);
         }
 
-        // POST: Patients/Delete/5
+        // POST: Clinic/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            Patient patient = await _context.Patient.SingleAsync(m => m.PatientID == id);
-            _context.Patient.Remove(patient);
+            Clinic clinic = await _context.Clinic.SingleAsync(m => m.ClinicID == id);
+            _context.Clinic.Remove(clinic);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }

@@ -11,13 +11,13 @@ namespace SriReportSuite.Models
         public int PatientID { get; set; }
         [Display(Name = "Name"), StringLength(50, ErrorMessage = "First Name length should not be greater than 50"), FirstNameValidation]
         public string FirstName { get; set; }
-        [Display(Name = "Surname"), StringLength(50, ErrorMessage = "Last Name length should not be greater than 50")]
+        [Required, Display(Name = "Surname"), StringLength(50, ErrorMessage = "Last Name length should not be greater than 50")]
         public string SurName { get; set; }
         
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)] //to make the date in acceptable format to Chrome HTML5 date field
         public DateTime DOB { get; set; }
-        [Display(Name = "Hosp. Number"), StringLength(15, ErrorMessage = "Hospital number length should not be greater than 15")]
+        [Required, Display(Name = "Hosp. Number"), StringLength(15, ErrorMessage = "Hospital number length should not be greater than 15")]
         public string HospNum { get; set; }
         [Display(Name = "NHS Number"), StringLength(15, ErrorMessage = "NHS number length should not be greater than 15")]
         public string NHSNum { get; set; }
@@ -25,7 +25,7 @@ namespace SriReportSuite.Models
         public string Address { get; set; }
         [StringLength(50, ErrorMessage = "City should not be greater than 50 characters")]
         public string City { get; set; }
-        [Display(Name ="Postcode"), StringLength(15, ErrorMessage = "Postcode length should not be greater than 15")]
+        [Required, Display(Name ="Postcode"), StringLength(15, ErrorMessage = "Postcode length should not be greater than 15")]
         public string PostCode { get; set; }
         [Display(Name = "Dead?")]
         public bool Dead { get; set; }
@@ -44,7 +44,7 @@ namespace SriReportSuite.Models
         [ForeignKey("Clinic")]
         public int ClinicID; //Patient's Clinic
 
-        //List of Patient's MRI Studies
+        //List of Patient's MRI Study
         
         public virtual ICollection<Study> Studies { get; set; } 
  

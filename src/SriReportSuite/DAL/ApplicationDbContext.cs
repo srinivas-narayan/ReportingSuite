@@ -7,12 +7,16 @@ namespace SriReportSuite.Models
     {
 
         public DbSet<Patient> Patient { get; set; }
-        public DbSet<Consultant> Consultants { get; set; }
+        public DbSet<Consultant> Consultant { get; set; }
         public DbSet<MRIConsultant> MRIConsultant { get; set; }
-        public DbSet<Registrar> Registrars { get; set; }
-        public DbSet<Clinic> Clinics { get; set; }
+        public DbSet<Registrar> Registrar { get; set; }
+        public DbSet<Clinic> Clinic { get; set; }
         public DbSet<Role> Role { get; set; }
-        public DbSet<Study> Studies { get; set; }
+        public DbSet<Study> Study { get; set; }
+        public DbSet<Flow>  Flow { get; set; }
+        public DbSet<Measurement> Measurement { get; set;}
+        public DbSet<Image> Image { get; set; }
+        public DbSet<Volume> Volume { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

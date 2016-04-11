@@ -1,5 +1,3 @@
- <script src="~/ckeditor/ckeditor.js" asp-append-version="true"></script>
-<!--The asp-append version tag ensures that the latest version of the script is downloaded by the browser... It is entirely optional here..-->
 @model SriReportSuite.Models.Patient
 
 @{
@@ -14,107 +12,27 @@
         <hr />
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
         <input type="hidden" asp-for="PatientID" />
-
-        <div class="form-group">
-            <label asp-for="FirstName" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="FirstName" rows="5" cols="75" class="form-control textlist" />
-                <span asp-validation-for="FirstName" class="text-danger" />
-            </div>
-        </div> <!--FirstName-->
-
-        <div class="form-group">
-            <label asp-for="SurName" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="SurName" class="form-control" />
-                <span asp-validation-for="SurName" class="text-danger" />
-            </div>
-        </div> <!-- Surname -->
-
-        <div class="form-group">
-            <label asp-for="DOB" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="DOB" class="form-control" />
-                <span asp-validation-for="DOB" class="text-danger" />
-            </div>
-        </div> <!--DOB-->
-
-        <div class="form-group">
-            <label asp-for="NHSNum" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="NHSNum" class="form-control" />
-                <span asp-validation-for="NHSNum" class="text-danger" />
-            </div>
-        </div> <!-- NHS Num-->
-
-        <div class="form-group">
-            <label asp-for="HospNum" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="HospNum" class="form-control" />
-                <span asp-validation-for="HospNum" class="text-danger" />
-            </div>
-        </div> <!-- Hospital Number -->
-
         <div class="form-group">
             <label asp-for="Address" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="Address" class="form-control" />
                 <span asp-validation-for="Address" class="text-danger" />
             </div>
-        </div> <!--Address-->
-
+        </div>
         <div class="form-group">
             <label asp-for="City" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="City" class="form-control" />
                 <span asp-validation-for="City" class="text-danger" />
             </div>
-        </div> <!-- City-->
-
+        </div>
         <div class="form-group">
-            <label asp-for="PostCode" class="col-md-2 control-label"></label>
+            <label asp-for="DOB" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="PostCode" class="form-control" />
-                <span asp-validation-for="PostCode" class="text-danger" />
+                <input asp-for="DOB" class="form-control" />
+                <span asp-validation-for="DOB" class="text-danger" />
             </div>
-        </div> <!-- PostCode -->
-
-        <div class="form-group">
-            <label asp-for="ClinicID" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="ClinicID" class="form-control" />
-                <span asp-validation-for="ClinicID" class="text-danger" />
-            </div>
-        </div> <!--clinicID-->
-
-        <div class="form-group">
-            <label asp-for="ConsultantID" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="ConsultantID" class="form-control" />
-                <span asp-validation-for="ConsultantID" class="text-danger" />
-            </div>
-        </div> <!-- ConsID-->
-
-        <div class="form-group">
-            <label asp-for="Diagnosis" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                
-                    <textarea asp-for="Diagnosis" class="form-control"> </textarea>
-                <script>CKEDITOR.replace('Diagnosis');</script>
-                <span asp-validation-for="Diagnosis" class="text-danger" />
-            </div>
-        </div> <!--diagnosis-->
-
-        <div class="form-group">
-            <label asp-for="Procedures" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                
-                    <textarea asp-for="Procedures" class="form-control"></textarea>
-                <script>CKEDITOR.replace('Procedures');</script>
-                <span asp-validation-for="Procedures" class="text-danger" />
-            </div>
-        </div> <!--Procedure-->
-
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <div class="checkbox">
@@ -122,14 +40,61 @@
                     <label asp-for="Dead"></label>
                 </div>
             </div>
-        </div> <!-- Dead-->
-
+        </div>
+        <div class="form-group">
+            <label asp-for="Diagnosis" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Diagnosis" class="form-control" />
+                <span asp-validation-for="Diagnosis" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FirstName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="HospNum" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="HospNum" class="form-control" />
+                <span asp-validation-for="HospNum" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="NHSNum" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="NHSNum" class="form-control" />
+                <span asp-validation-for="NHSNum" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PostCode" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="PostCode" class="form-control" />
+                <span asp-validation-for="PostCode" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Procedures" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Procedures" class="form-control" />
+                <span asp-validation-for="Procedures" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="SurName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="SurName" class="form-control" />
+                <span asp-validation-for="SurName" class="text-danger" />
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
-        </div> <!-- Save-->
-
+        </div>
     </div>
 </form>
 
