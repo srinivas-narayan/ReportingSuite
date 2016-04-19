@@ -362,6 +362,8 @@ namespace SriReportSuite.Migrations
 
                     b.Property<string>("ScanSummary");
 
+                    b.Property<string>("StudyComment");
+
                     b.Property<DateTime>("StudyDate");
 
                     b.Property<int>("StudyStatus");

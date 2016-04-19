@@ -15,6 +15,7 @@ namespace SriReportSuite.DAL
         {
             var context = serviceProvider.GetService<ApplicationDbContext>();
             context.Database.Migrate();
+
             if (!context.Role.Any())
             {
                 var roles = new List<Role>
@@ -33,6 +34,7 @@ namespace SriReportSuite.DAL
                 roles.ForEach(r => context.Role.Add(r));
                 context.SaveChanges();
             }
+
             if (!context.Consultant.Any())
             {
                 var consultants = new List<Consultant>
@@ -50,6 +52,7 @@ namespace SriReportSuite.DAL
                 };
                 consultants.ForEach(c => context.Consultant.Add(c));
                 context.SaveChanges();
+
                 var mriconsultants = new List<MRIConsultant>
                 {
                     new MRIConsultant {ForeName="Aaron", SurName="Bell",Designation="Consultant Paediatric Cardiologist", RoleID=6 },
@@ -62,6 +65,7 @@ namespace SriReportSuite.DAL
                 };
                 mriconsultants.ForEach(mc => context.MRIConsultant.Add(mc));
             }
+
             if (!context.Registrar.Any())
             {
                 var registrars = new List<Registrar>
@@ -80,6 +84,7 @@ namespace SriReportSuite.DAL
                 registrars.ForEach(r => context.Registrar.Add(r));
                 context.SaveChanges();
             }
+
             if (!context.Clinic.Any())
             {
                 var clinics = new List<Clinic>
@@ -105,6 +110,7 @@ namespace SriReportSuite.DAL
                 clinics.ForEach(c => context.Clinic.Add(c));
                 context.SaveChanges();
             }
+
             if (!context.Patient.Any())
             {
                 var patients = new List<Patient>
@@ -120,6 +126,7 @@ namespace SriReportSuite.DAL
                 patients.ForEach(p => context.Patient.Add(p));
                 context.SaveChanges();
             }
+
             if (!context.Study.Any())
             {
                 var studies = new List<Study>
@@ -127,8 +134,8 @@ namespace SriReportSuite.DAL
                     new Study   {   PatientID= 1,
                                     StudyDate= new DateTime(2007, 01,01),
                                     ReportDate= new DateTime(2007, 01,01),
-                                    StudyStatus= 0,
-                                    StudyType= 0,
+                                    StudyStatus= StudyStatus.FinalReport,
+                                    StudyType= StudyType.PaedCardiacMRI,
                                     GA= true,
                                     Echo= "0",
                                     Bronchoscopy= false,
@@ -143,15 +150,16 @@ namespace SriReportSuite.DAL
                                     ScanSummary= "<p>This is a summary1<p>1",
                                     Findings= "<p>This is the findings</p>1",
                                     Summary= "<p>This is a summary<p>1",
+                                    StudyComment = "First Example Study",
                                     RegID= 1,
                                     ConsultantID= 4,
                                     MRIConsultantConsultantID= 15
                                  },
                     new Study {     PatientID= 2,
-                                    StudyDate= new DateTime(2008, 3,23),
+                                    StudyDate= new DateTime(2018, 3,23),
                                     ReportDate= new DateTime(2007, 3,31),
-                                    StudyStatus= 0,
-                                    StudyType= 0,
+                                    StudyStatus= StudyStatus.Waitlisted,
+                                    StudyType= StudyType.ACHDCardiacMRI,
                                     GA= true,
                                     Echo= "1",
                                     Bronchoscopy= true,
@@ -163,6 +171,7 @@ namespace SriReportSuite.DAL
                                     Indication= "Testing1",
                                     Contrast= "Dotarem",
                                     ContrastDose = "3.8ml",
+                                    StudyComment = "Interesting Patient",
                                     ScanSummary= "<p>This is a summary1<p>1",
                                     Findings= "<p>This is the findings</p>1",
                                     Summary= "<p>This is a summary<p>1",
@@ -174,6 +183,7 @@ namespace SriReportSuite.DAL
                 studies.ForEach(s => context.Study.Add(s));
                 context.SaveChanges();
             }
+
             if (!context.Flow.Any())
             {
                 var flows = new List<Flow>
@@ -186,6 +196,7 @@ namespace SriReportSuite.DAL
                 flows.ForEach(f => context.Flow.Add(f));
                 context.SaveChanges();
             }
+
             if (!context.Measurement.Any())
             {
                 var measurements = new List<Measurement>
@@ -198,16 +209,30 @@ namespace SriReportSuite.DAL
                 measurements.ForEach(m => context.Measurement.Add(m));
                 context.SaveChanges();
             }
+
             if (!context.Volume.Any())
             {
                 var volumes = new List<Volume>
                 {
-                    new Volume { StudyID=1,  Chamber="LV", EDV=105, ESV=60, HeartRate=65},
+                    new Volume { StudyID=1, Chamber="LV", EDV=105, ESV=60, HeartRate=65},
                     new Volume { StudyID=1, Chamber="RV", EDV=105, ESV=60, HeartRate=65  },
                     new Volume { StudyID=2, Chamber="LV", EDV=105, ESV=60, HeartRate=70 },
                     new Volume { StudyID=2, Chamber="RV", EDV=105, ESV=60, HeartRate=70 },
                 };
                 volumes.ForEach(v => context.Volume.Add(v));
+                context.SaveChanges();
+            }
+
+            if (!context.Image.Any())
+            {
+                var images = new List<Image>
+                {
+                    new Image { StudyID=1, ImgDesc="Image1.1" },
+                    new Image { StudyID=1, ImgDesc="Image1.2"  },
+                    new Image { StudyID=2, ImgDesc="Image2.1" },
+                    new Image { StudyID=2, ImgDesc="Image2.2" },
+                };
+                images.ForEach(v => context.Image.Add(v));
                 context.SaveChanges();
             }
         }

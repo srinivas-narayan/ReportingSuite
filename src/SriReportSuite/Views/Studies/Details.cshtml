@@ -1,0 +1,150 @@
+@model SriReportSuite.Models.Study
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Study</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Bronchoscopy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Bronchoscopy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CVP)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CVP)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ClinicID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ClinicID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ConsultantID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ConsultantID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Contrast)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Contrast)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ContrastDose)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ContrastDose)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Echo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Echo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Echocardiogram)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Echocardiogram)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FiO2)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FiO2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Findings)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Findings)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GA)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GA)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Height)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Height)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Indication)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Indication)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastUpdated)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastUpdated)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ReportDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Saturations)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Saturations)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ScanSummary)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ScanSummary)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StudyDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StudyDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StudyStatus)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StudyStatus)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StudyType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StudyType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Summary)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Summary)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Weight)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Weight)
+        </dd>
+    </dl>
+</div>
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.StudyID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</p>

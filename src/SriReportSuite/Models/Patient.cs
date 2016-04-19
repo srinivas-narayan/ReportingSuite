@@ -49,7 +49,7 @@ namespace SriReportSuite.Models
         public virtual ICollection<Study> Studies { get; set; } 
  
 
-        public override string ToString() //coughs up most data as string
+        public override string ToString() //collects up most data as string - for debugging purposes
         {
             return (FirstName + " " + SurName + " --|-- "
                 + DOB.ToString() + " --|-- "
